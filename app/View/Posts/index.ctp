@@ -33,7 +33,8 @@
                 ?>
                 <?php
                 echo $this->Html->link(
-                    'Edit', array('action' => 'edit', $post['Post']['id'])
+                    'Edit',
+                    array('action' => 'edit', $post['Post']['id'])
                 );
                 ?>
             </td>
@@ -44,3 +45,20 @@
     <?php endforeach; ?>
 
 </table>
+<p><?php
+if (!empty($Auth)){
+    echo $this->Html->link(
+        $Auth['username'],
+        array('controller' => 'users','action' => 'view', $Auth['id'])
+    );
+    echo(' | ');
+    echo $this->Html->link(
+        'Logout',
+        array('controller' => 'users','action' => 'logout')
+    );
+}
+else echo $this->Html->link(
+        'Login',
+        array('controller' => 'users','action' => 'login')
+    );
+?></p>

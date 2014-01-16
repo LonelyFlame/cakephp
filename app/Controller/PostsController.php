@@ -11,7 +11,6 @@ class PostsController extends AppController {
         if (!$id) {
             throw new NotFoundException(__('Invalid post'));
         }
-
         $post = $this->Post->findById($id);
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
@@ -20,6 +19,7 @@ class PostsController extends AppController {
     }
 
     public function add() {
+
         if ($this->request->is('post')) {
             $this->Post->create();
             $this->request->data['Post']['user_id'] = $this->Auth->user('id');

@@ -1,4 +1,12 @@
 <?php
+echo $this->Html->link(
+    'Posts',
+    array('controller' => 'posts')
+);
+?>
+
+
+<?php
 /**
  *
  *
