@@ -24,19 +24,21 @@
                 ?>
             </td>
             <td>
+                <?php if ($post['Post']['user_id'] == $Auth['id']): ?>
                 <?php
                 echo $this->Form->postLink(
                     'Delete',
                     array('action' => 'delete', $post['Post']['id'], $post['Post']['title']),
                     array('confirm' => 'Are you sure?')
                 );
-                ?>
+                    ?>
                 <?php
                 echo $this->Html->link(
                     'Edit',
                     array('action' => 'edit', $post['Post']['id'])
                 );
                 ?>
+                <?php endif; ?>
             </td>
             <td>
                 <?php echo $post['Post']['created']; ?>
