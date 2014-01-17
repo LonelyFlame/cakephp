@@ -1,7 +1,9 @@
 <?php
+App::uses('Post', 'Comment');
 class PostsController extends AppController {
     public $helpers = array('Html', 'Form', 'Session');
     public $components = array('Session');
+    public $uses = array('Post', 'Comment');
 
     public function index() {
         $this->set('posts', $this->Post->find('all'));
@@ -16,6 +18,7 @@ class PostsController extends AppController {
             throw new NotFoundException(__('Invalid post'));
         }
         $this->set('post', $post);
+        $this->set('comments' , $this->Comment->findAllByPost($id));
     }
 
     public function add() {
