@@ -8,15 +8,14 @@
 
 <?php
 foreach($comments as $comment):
-    echo ''.$comment['Comment']['comment'].'
-';
+    echo ''.$comment['Comment']['comment'].'';
+    echo '<br>';
 endforeach;
 ?>
 
 <?php
-echo $this->Form->create('Comment');
+echo $this->Form->create('Comment', array('controller' => 'Comments','action' => 'add'));
 echo $this->Form->hidden('post', array('value' => $post['Post']['id']));
 echo $this->Form->input('comment', array('type'=>'textarea'));
-echo $this->Form->submit('Submit');
-echo $this->Form->end();
+echo $this->Form->end('Save Comment');
 ?>
