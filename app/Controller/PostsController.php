@@ -18,7 +18,11 @@ class PostsController extends AppController {
             throw new NotFoundException(__('Invalid post'));
         }
         $this->set('post', $post);
-        $this->set('comments' , $this->Comment->findAllByPost($id));
+        $this->set('comments' , $this->Comment->find('all', array(
+            'conditions' => array(
+                'post' => $id
+            )
+        )));
     }
 
     public function add() {

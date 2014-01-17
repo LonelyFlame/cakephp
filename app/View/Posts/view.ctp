@@ -8,7 +8,9 @@
 
 <?php
 foreach($comments as $comment):
-    echo ''.$comment['Comment']['comment'].'';
+    echo $comment['Comment']['comment'];
+    echo ' | Author: ';
+    echo $comment['User']['username'];
     echo '<br>';
 endforeach;
 ?>
@@ -16,6 +18,7 @@ endforeach;
 <?php
 echo $this->Form->create('Comment', array('controller' => 'Comments','action' => 'add'));
 echo $this->Form->hidden('post', array('value' => $post['Post']['id']));
+echo $this->Form->hidden('user_id', array('value' => $Auth['id']));
 echo $this->Form->input('comment', array('type'=>'textarea'));
 echo $this->Form->end('Save Comment');
 ?>
