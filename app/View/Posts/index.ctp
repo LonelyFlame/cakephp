@@ -24,7 +24,7 @@
                 ?>
             </td>
             <td>
-                <?php if ($post['Post']['user_id'] == $Auth['id']): ?>
+                <?php if ($post['Post']['user_id'] == $Auth['id'] or $Auth['role'] == 'admin'): ?>
                 <?php
                 echo $this->Form->postLink(
                     'Delete',
